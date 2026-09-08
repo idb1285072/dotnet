@@ -1,0 +1,120 @@
+﻿@using Day_08_Day_01.Models
+@model IEnumerable<Person>
+
+@{
+    // string appTitle = "Asp.Net Core Demo App";
+    Person person = new Person()
+    {
+        Id = 101,
+        Name = "Raj",
+        DateOfBirth = Convert.ToDateTime("1998-02-12"),
+        PersonGender = Gender.Male
+    };
+
+    // List<Person> people = new List<Person>()
+    // {
+    //     new Person()
+    //     {
+    //         Id=1,
+    //         Name = "John",
+    //         DateOfBirth = DateTime.Parse("2000-02-18"),
+    //         PersonGender = Gender.Male},
+    //     new Person()
+    //     {
+    //         Id=2,
+    //         Name = "Linda",
+    //         DateOfBirth = DateTime.Parse("1998-02-18"),
+    //         PersonGender = Gender.Female},
+    //     new Person()
+    //     {
+    //         Id=1,
+    //         Name = "Raju",
+    //         DateOfBirth = DateTime.Parse("2000-02-18"),
+    //         PersonGender = Gender.Male
+    //     }
+    // };
+}
+
+@{
+    double? GetAge(DateTime? dateOfBirth)
+    {
+        if (dateOfBirth.HasValue)
+        {
+            return Math.Round((DateTime.Now - dateOfBirth.Value).TotalDays / 365.25);
+        }
+        return null;
+    }
+
+    int x = 10; // field not local variable in side functions
+
+    // string alertMessage = $"<script>alert('{people.Count} people found')</script>";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    @* <title>@appTitle</title> *@
+    <title>@ViewData["pageTitle"]</title>
+    <meta charset="utf-8" />
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+    @* @Html.Raw(alertMessage) *@
+    <h1>Welcome</h1>
+    <h2>Hello @person.Name</h2>
+    @if (person.DateOfBirth.HasValue)
+    {
+        double age = Math.Round((DateTime.Now - person.DateOfBirth).Value.TotalDays / 365.25);
+        <h3>@age years old</h3>
+    }
+    else
+    {
+        <h3>Date of birth is unknown.</h3>
+    }
+
+    @switch (person.PersonGender)
+    {
+        case Gender.Male:
+            <p>November 19 is International Men's Day</p>
+            break;
+        case Gender.Female:
+            <p>March 8 is International Women's Day.</p>
+            break;
+        case Gender.Other:
+            <p>March 31 is International Transgender's Day.</p>
+            break;
+    }
+
+    @* @foreach (var person in people)
+    {
+        <div>
+            @person.Name<span>, </span>
+            <span>@person.PersonGender</span>
+            @if (person.DateOfBirth.HasValue)
+            {
+                <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
+            }
+        </div>
+    } *@
+
+    @for (int i = 0; i < 2; i++)
+    {
+        @* List<Person>? people = (List<Person>?)ViewData["people"]; *@
+        @* List<Person>? people = ViewBag.people; *@
+        @* Person person = people[i]; *@
+        Person person = Model.ToList()[i];
+        <div>
+            @person.Name
+            <span>, </span>
+            <span>@person.PersonGender</span>
+            @if (person.DateOfBirth.HasValue)
+            {
+                <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
+                <span>@GetAge(person.DateOfBirth) years old</span>
+            }
+            <a href="/person-details/@person.Id" class="btn btn-link">Details</a>
+        </div>
+    }
+</body>
+</html>

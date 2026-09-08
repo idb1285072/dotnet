@@ -1,0 +1,2 @@
+- Strongly Typed View is a view that is bound to a specified model class.
+- It is mainly used to access the model object/model collection easily in the view.
