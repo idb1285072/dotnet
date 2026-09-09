@@ -42,7 +42,7 @@ namespace Day_08_Day_01.Controllers
         [Route("person-details/{id}")]
         public IActionResult Details(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return Content("Person name cannot be null");
             }
@@ -69,8 +69,24 @@ namespace Day_08_Day_01.Controllers
                     PersonGender = Gender.Male
                 }
             };
-           Person? matchingPerson = people.FirstOrDefault(person => person.Id == id);
+            Person? matchingPerson = people.FirstOrDefault(person => person.Id == id);
             return View("Details", matchingPerson);
+        }
+
+        [Route("person-with-product")]
+        public IActionResult Product()
+        {
+            Person person = new Person() { Id = 1, Name = "Raj", PersonGender = Gender.Male, DateOfBirth = Convert.ToDateTime("2004-01-14") };
+            Product product = new Product() { Id = 1, Name = "Product 1" };
+
+            PersonAndProductWrapperModel model = new PersonAndProductWrapperModel() { PersonData = person, ProductData = product };
+            return View("PersonWithProduct", model);
+        }
+
+        [Route("all")]
+        public IActionResult All()
+        {
+            return View();
         }
     }
 }

@@ -1,0 +1,55 @@
+﻿@model PersonAndProductWrapperModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person with Product</title>
+    <meta charset="utf-8" />
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="card shadow-sm mt-3">
+            <div class="card-header">
+                <h3 class="card-title">Person</h3>
+            </div>
+            <div class="card-body">
+
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Person Name</td>
+                            <td>@Model.PersonData.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>@Model.PersonData.PersonGender</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card shadow-sm mt-3">
+            <div class="card-header">
+                <h3 class="card-title">Product</h3>
+            </div>
+            <div class="card-body">
+
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Product Id</td>
+                            <td>@Model.ProductData.Id</td>
+                        </tr>
+                        <tr>
+                            <td>Product Name</td>
+                            <td>@Model.ProductData.Name</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

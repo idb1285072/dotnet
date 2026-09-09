@@ -1,5 +1,4 @@
-﻿@using Day_08_Day_01.Models
-@model IEnumerable<Person>
+﻿@model IEnumerable<Person>
 
 @{
     // string appTitle = "Asp.Net Core Demo App";
@@ -113,8 +112,11 @@
                 <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
                 <span>@GetAge(person.DateOfBirth) years old</span>
             }
-            <a href="/person-details/@person.Id" class="btn btn-link">Details</a>
+            <a href="/person-details/@person.Id" class="btn btn-link">Person Details</a>
         </div>
     }
+    <div>
+        <a href="/person-with-product" class="btn btn-link">Person with Product</a>
+    </div>
 </body>
 </html>
