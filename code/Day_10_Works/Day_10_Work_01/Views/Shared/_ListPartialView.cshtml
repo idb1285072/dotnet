@@ -1,0 +1,33 @@
+﻿@model ListModal
+
+<div class="card shadow-sm">
+    <div class="card-header">
+        @* <div class="card-title">Cities</div> *@
+
+        @* @{
+            ViewData["ListTitle"] = "Updated";
+        } *@
+        @* <div class="card-title">@ViewBag.ListTitle</div> *@
+
+        <div class="card-title">@Model.ListTitle</div>
+    </div>
+    <div class="card-body">
+
+        <ul class="list-group">
+            @* <li class="list-group-item">London</li>
+            <li class="list-group-item">Paris</li>
+            <li class="list-group-item">New York</li>
+            <li class="list-group-item">Tokyo</li>
+            <li class="list-group-item">Rome</li> *@
+
+            @* @foreach (string item in ViewBag.ListItems)
+            {
+                <li class="list-group list-group-item">@item</li>
+            } *@
+            @foreach (string item in Model.ListItems)
+            {
+                <li class="list-group list-group-item">@item</li>
+            }
+        </ul>
+    </div>
+</div>

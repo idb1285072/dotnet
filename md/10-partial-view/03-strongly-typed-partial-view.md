@@ -1,0 +1,1 @@
+- Strongly Typed Partial View is a partial view that is bound to a specified modal class. So, it gets all the benefits of a strongly typed view.

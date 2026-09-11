@@ -1,0 +1,31 @@
+﻿<h1>Home</h1>
+<p>Home Page</p>
+@* <partial name="_ListPartialView"></partial> *@
+
+@* @{
+    ViewData["ListTitle"] = "Countries";
+    ViewData["ListItems"] = new List<string>
+    {
+        "USA", "Canada", "Japan", "Germany"
+    };
+} *@
+
+@* @await Html.PartialAsync("_ListPartialView")
+
+@{
+    await Html.RenderPartialAsync("_ListPartialView");
+} *@
+@* 
+<div class="alert alert-info">
+    <p>@ViewBag.ListTitle</p>
+</div> *@
+
+@{
+    ListModal countryListModal = new ListModal();
+    countryListModal.ListTitle = "Countries";
+    countryListModal.ListItems = new List<string>()
+    {
+       "USA", "Canada", "Japan", "Germany"
+    };
+}
+<partial name="_ListPartialView" model="countryListModal" />

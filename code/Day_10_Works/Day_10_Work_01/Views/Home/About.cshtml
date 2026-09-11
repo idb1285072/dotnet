@@ -1,0 +1,13 @@
+﻿<h1>About</h1>
+<p>About page</p>
+
+<button class="btn btn-sm btn-primary" type="button" id="btn-load">Load Programming Languages</button>
+<div id="programming-languages"></div>
+
+<script>
+    document.getElementById("btn-load").addEventListener("click", async function(){
+      var response = await fetch("programming-languages");
+      var languages = await response.text();
+      document.querySelector("#programming-languages").innerHTML = languages;
+    });
+</script>

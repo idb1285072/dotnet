@@ -1,0 +1,2 @@
+- PartialViewResult can represent the content of a partial
+- Generally useful to fetch partial view's content into the browser, by making an asynchronous request (XMLHttpRequest / fetch request) from the browser.
